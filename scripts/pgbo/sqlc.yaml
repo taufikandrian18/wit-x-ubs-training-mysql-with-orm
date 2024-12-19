@@ -1,0 +1,17 @@
+version: "1"
+packages:
+  - name: "sqlc"
+    path: "../../src/repository/pgbo_sqlc" # Updated path for MySQL code
+    queries: "./queries"
+    schema: 
+    - "./migrations"           # MySQL schema migration files
+    engine: "mysql"            # Change from "postgresql" to "mysql"
+    emit_json_tags: true
+    emit_prepared_queries: false
+    emit_interface: false
+    emit_exact_table_names: false
+overrides:
+  - column: "favorite_location.latitude"
+    go_type: "float64"
+  - column: "favorite_location.longitude"
+    go_type: "float64"
